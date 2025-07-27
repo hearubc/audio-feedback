@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Perception Feedback</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .field {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      text-align: center;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Audio Perception Survey</h1>
+
+    <div class="field">
+      <label for="audio">Listen to the audio sample:</label>
+      <audio controls id="audio">
+        <source src="your-audio-file.wav" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <form id="feedbackForm">
+      <div class="field">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="1" max="120" required>
+      </div>
+
+      <div class="field">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="">-- Select --</option>
+          <option value="Female">Female</option>
+          <option value="Male">Male</option>
+          <option value="Non-binary">Non-binary</option>
+          <option value="Prefer not to say">Prefer not to say</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="response">Describe your response to the audio:</label>
+        <textarea id="response" name="response" rows="6" required></textarea>
+      </div>
+
+      <div class="field">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="footer">
+    <p>Code licensed under the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>. <br>
+    Audio &copy; 2025 Angela Deng, licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>.</p>
+  </div>
+
+  <script>
+    document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const age = document.getElementById("age").value;
+      const gender = document.getElementById("gender").value;
+      const response = document.getElementById("response").value;
+
+      // For demo: just log it. In production, POST to your server or store in DB
+      console.log({ age, gender, response });
+      alert("Thank you for your response!");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
